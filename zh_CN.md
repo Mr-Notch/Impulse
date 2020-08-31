@@ -64,7 +64,7 @@ enable-systemlogs=true
 
 # 监听客户端模组选项
 client-mods-listen:
-  # 是否启用该选项:
+  # 是否启用该选项
   enable=false
   # 是否开启白名单模式，如果为否，则为黑名单模式
   whitelist-mode=false
@@ -77,4 +77,76 @@ client-mods-listen:
   kick-mode=false
   # 是否开启监测客户端是否有注入外挂的情况（需要在客户端配置impulse-security模组）
   dll-import-listen=false
+  
+# 服务器RealTime设置
+realtime-settings:
+  # 是否启用该选项
+  enable=true
+  # 客户端是否受到RealTime的影响
+  client-mode=true
+  # 是否影响全局时钟（红石服不推荐开启，由于TPS降低可能会造成红石信号延迟较大）
+  global-timer-mode=false
+
+# 客户端渲染设置
+client-graph-settings:
+  # 是否将地毯端的tick warp时间加速应用在客户端
+  carpet-tickwarp=true
+  # 是否将地毯端的tick freeze应用在客户端
+  carpet-tickfreeze=true
+  # 是否将地毯端的tick step应用在客户端
+  carpet-tickstep=true
+
+# 服务端类加载器设置
+servercore-classesloader-settings:
+  # 是否将API类切换至全局广播
+  global-mode-api-class=true
+  # 是否将security类切换至全局广播
+  global-mode-security-class=false
+  # 是否检测强制类注入
+  enable-force-importclasses=true
+
+# 服务端加密设置
+servercore-security-settings:
+  # 是否加密数据包传输
+  enbale-sha256-packs=true
+  # 是否加密客户端数据
+  enable-sha256-clientdata=true
+  # 是否加密服务端数据
+  enable-sha256-serverdata=true
+  # 是否在启动时混淆源码（可能会导致额外基于Mixin的Mod失效）
+  enable-random-func=false
+  
+# i18n设置
+language=zh_CN
+global=ShangHai
 ```
+#### >>>指令与函数
+这里列举了所有Impulse Core核心加入的指令，其中部分指令执行需要4级权限（op）
+```
+/impulse - Impulse冲动核心母指令
+/help - 帮助指令
+/healthreport - 使用斯波克给服务器跑个分
+/timings - 使用斯波克查看服务器的Timings
+/fabric - FabricAPI母指令
+/carpet - CarpetMod母指令
+/qf - QuickFunction母指令
+/reload - 重载所有Mod、datapacks、worlds以及impulse.yml、server文件等
+!!MCDR - MCDR母指令
+```
+
+#### >>>注意事项
+- /reload指令仅建议在特殊时期使用，由于其需要加载几乎所有的服务端功能，需要耗费大量的运算时间，可能会导致服务器跳刻的情况发生
+- /timings指令来自于Spark插件，反馈也由Spark执行并代理网站
+- 如不想重载所有东西，可以在/reload指令后面加上参数，例如
+```
+/reload mods - 仅重载模组
+/reload datapacks - 仅重载数据包
+/reload worlds - 仅重载世界
+/reload carpet - 仅重载CarpetMod
+/reload qf - 仅重载QuickFunctions
+/relaod server - 仅重载impulse.yml文件、server.properties文件
+/reload mcdr - 仅重载MCDR
+```
+- RealTime不建议在有大量红石的服务器中启用，RealTime的本质意义就是在服务器跳刻时，不影响玩家的正常饮食、走路、交互、挖矿等延迟，但是会导致红石进程大量迂回从而造成红石机器卡死
+- 服务端核心内所有加密都由SHA-256式加密并打乱顺序
+- 一些功能需要客户端配备Impulse-security模组才能完成，为防止玩家删除该模组，请额外寻找支持的MD5校验启动器
