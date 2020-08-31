@@ -17,7 +17,7 @@
 - Impulse端：MCDR插件API监听全在内部进行，无需额外外置其他程序
 
 ## 使用说明书
-点我查看（zh_CN）
+[点我查看（zh_CN）](https://github.com/Mr-Notch/Impulse/blob/master/zh_CN.md "点我查看（zh_CN）")
 Click Here（en_US）
 
 ## 开源协议
