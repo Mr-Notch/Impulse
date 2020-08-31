@@ -15,7 +15,7 @@
 - 解压缩Impulse自动构建程序压缩宝
 
 ##### Step 3：
-- 双击Build.bat命令行文件
+- 启动Build.bat或Build,sh命令行文件
 - 等待构建完成（具体请参照计算机的网络环境，部分较差网络可能会导致Build Failed）
 
 ##### Step 4：
@@ -23,15 +23,17 @@
 - 在./BuildJars文件夹中通常会找到类似Impulse-v1.0.0-fabric.jar等的Java运行程序
 
 ##### Step 5：
-- 将构建出来的Java运行程序放入任意位置，并使用以下启动参数启动该Java运行程序
-
-`java -Xmx1024M -Xms1024M -jar Impulse-v1.0.0-fabric.jar`
-> 请注意，该命令行脚本仅作为示范使用，实际生产环境中请按照自行环境斟酌
+- 将构建出来的Java运行程序放入任意位置，并下载Impulse启动器然后将启动器与.jar文件放在同一位置处
+- 再次确认计算机的Python与Java服务是否完整（如果不完整可能连构建都构建不了）
+- 启动启动器.exe或.sh，如果是.exe程序可能会有一个小界面来帮助控制Impulse端，而.sh文件则是命令行文件，需要自行使用上下左右箭头移动光标来操作选项指针
 
 ##### Step 6：
-- 运行该命令行脚本，等待Impulse第二次下载完毕
+- Windows下，点击“Start Server Core”按钮，此时会弹出一个PowerShell窗口，等待Impulse第二次下载完毕
+- UNIX下，将光标移动至“Start Server Core”选项并按下回车键，此时会退出拟光标界面并变成命令行界面，等待Impulse第二次下载完毕
 - 下载完毕后，服务端会提示请同意eula协议，那么请关闭服务端，并打开eula.txt文件，将布尔值修改为true，保存并关闭即可
 - 再次运行命令行，没问题的话系统将提示服务端已开启。那么请根据自行条件修改impulse.yml文件即可
+
+> Windows下的PowerShell窗口与Impulse启动器窗口请勿关闭，并且请勿在PowerShell窗口执行例如Ctrl+C或Ctrl+Z等快捷键操作，如需复制信息请使用鼠标。因为在PowerShell中，Ctrl+C键或Ctrl+Z键会直接杀死当前进程。
 
 #### >>>Impulse冲动服务端目录格式
 ```
